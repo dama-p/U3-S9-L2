@@ -14,7 +14,7 @@ class SingleBook extends Component {
       <Col className="col-6 col-md-4 col-lg-3 col-xl-2 gy-3 d-flex">
         <Card
           style={{
-            outline: this.state.selected === true ? "2px solid red" : "none",
+            outline: this.state.selected === true ? "2px solid red" : "none"
           }}
           id="cardStyle"
         >
