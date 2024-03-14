@@ -44,7 +44,7 @@
 .footerStyle {
   background-color: rgb(28, 28, 28);
   height: 250px;
-  color:#FFC108;
+  color: #ffc108;
   text-align: center;
   margin-top: 50px;
   padding-block: 50px;
@@ -58,7 +58,7 @@
 }
 
 .footerStyle a:hover {
-  color: #FFC108;
+  color: #ffc108;
 }
 
 .navbarStyle {
@@ -79,13 +79,15 @@
   color: white;
 }
 
-
 .cardTitle {
   font-size: 1.1rem;
   line-height: 1.3rem;
-  font-weight: bold; }
+  font-weight: bold;
+ 
+}
 
 .cardDetails {
   font-size: 0.9rem;
   font-family: monospace;
 }
+
