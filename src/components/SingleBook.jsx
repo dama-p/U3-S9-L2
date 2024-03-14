@@ -28,7 +28,7 @@ class SingleBook extends Component {
 
               {this.state.selected === true && (
                 <div>
-                  <CommentArea />
+                  <CommentArea asin={this.props.book.asin}/>
                 </div>
               )}
               <Button
