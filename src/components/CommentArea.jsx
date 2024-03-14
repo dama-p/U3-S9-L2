@@ -1,6 +1,7 @@
 import { Component } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 
-const URL = "https://striveschool-api.herokuapp.com/api/comments/{asin}"
+const URL = "https://striveschool-api.herokuapp.com/api/comments/";
 class CommentArea extends Component {
   state = {
     bookComments: [],
@@ -8,9 +9,8 @@ class CommentArea extends Component {
     isError: false,
   };
 
-
   fetchComments = () => {
-    fetch(`URL`, {
+    fetch(URL + this.props.asin, {
       method: "GET",
 
       headers: {
@@ -27,7 +27,7 @@ class CommentArea extends Component {
       })
 
       .then((comments) => {
-       /*  console.log("COMMENTS", comments); */
+        /*  console.log("COMMENTS", comments); */
         this.setState({
           bookComments: comments,
           isLoading: false,
@@ -48,7 +48,13 @@ class CommentArea extends Component {
   }
 
   render() {
-    return <p>Prova</p>;
+    return (
+      <ListGroup>
+        {this.state.bookComments.map((comment) => {
+          return <ListGroup.Item key={comment._id}>{comment.comment}</ListGroup.Item>;
+        })}
+      </ListGroup>
+    );
   }
 }
 
