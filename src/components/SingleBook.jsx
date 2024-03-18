@@ -5,9 +5,9 @@ import CommentArea from "./CommentArea";
 import { Component } from "react";
 
 class SingleBook extends Component {
-  state = {
+  /*   state = {
     selected: false,
-  };
+  }; */
 
   render() {
     return (
@@ -15,7 +15,7 @@ class SingleBook extends Component {
         <Col className="col-6 col-md-4 col-lg-3 col-xl-2 gy-3 d-flex">
           <Card
             style={{
-              outline: this.state.selected === true ? "2px solid red" : "none",
+              outline: this.props.book.asin === this.props.currentlyActiveAsin ? "2px solid red" : "none",
             }}
             id="cardStyle"
           >
@@ -26,16 +26,17 @@ class SingleBook extends Component {
                 {this.props.book.price}€ • {this.props.book.category}
               </p>
 
-              {this.state.selected === true && (
+              {/*     {this.state.selected === true && (
                 <div>
                   <CommentArea asin={this.props.book.asin}/>
                 </div>
-              )}
+              )} */}
               <Button
                 variant="warning"
                 className="d-flex mx-auto mt-auto"
                 onClick={() => {
-                  this.setState({ selected: !this.state.selected });
+                  /*  this.setState({ selected: !this.state.selected }); */
+                  this.props.changeAsin(this.props.book.asin);
                 }}
               >
                 Add to cart

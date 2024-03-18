@@ -2,12 +2,21 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import SingleBook from "./SingleBook";
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 
 import { Component } from "react";
+import CommentArea from "./CommentArea";
 
 class BookList extends Component {
   state = {
     bookTitle: "",
+    asin: "",
+  };
+
+  changeAsin = (newAsin) => {
+    this.setState({
+      asin: newAsin,
+    });
   };
 
   render() {
@@ -25,9 +34,23 @@ class BookList extends Component {
           />
         </Form>
         <Row className="align-items-stretch">
-          {this.props.booksArray.map((item) => {
-            return <SingleBook book={item} key={item.asin} />;
-          })}
+          <Col className="col-8">
+            †
+            {this.props.booksArray.map((item) => {
+              return (
+                <SingleBook
+                  book={item}
+                  key={item.asin}
+                  changeAsin={this.changeAsin}
+                  currentlyActiveAsin={this.state.asin}
+                />
+              );
+            })}
+          </Col>
+
+          <Col className="col-4">
+            <CommentArea asin={this.state.asin} />
+          </Col>
         </Row>
       </Container>
     );
