@@ -35,9 +35,11 @@ class BookList extends Component {
         </Form>
         <Row className="align-items-stretch">
           <Col className="col-8">
-            †
+
+            <Row>
             {this.props.booksArray.map((item) => {
               return (
+               
                 <SingleBook
                   book={item}
                   key={item.asin}
@@ -46,6 +48,7 @@ class BookList extends Component {
                 />
               );
             })}
+          </Row>
           </Col>
 
           <Col className="col-4">

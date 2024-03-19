@@ -1,4 +1,5 @@
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CommentArea from "./CommentArea";
@@ -12,7 +13,8 @@ class SingleBook extends Component {
   render() {
     return (
       <>
-        <Col className="col-6 col-md-4 col-lg-3 col-xl-2 gy-3 d-flex">
+     
+        <Col className="col-2 gy-3 d-flex">
           <Card
             style={{
               outline: this.props.book.asin === this.props.currentlyActiveAsin ? "2px solid red" : "none",
@@ -44,6 +46,7 @@ class SingleBook extends Component {
             </Card.Body>
           </Card>
         </Col>
+  
       </>
     );
   }
