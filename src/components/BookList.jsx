@@ -6,20 +6,24 @@ import Col from "react-bootstrap/Col";
 
 import { Component } from "react";
 import CommentArea from "./CommentArea";
+import { useState } from "react";
 
-class BookList extends Component {
-  state = {
+const BookList = function (props) {
+  /*   state = {
     bookTitle: "",
     asin: "",
-  };
+  }; */
 
-  changeAsin = (newAsin) => {
-    this.setState({
+  const [bookTitle, setBookTitle] = useState("");
+  const [asin, setAsin] = useState("");
+
+  const changeAsin = (newAsin) => {
+    /*     this.setState({
       asin: newAsin,
-    });
+    }); */
+    setAsin(newAsin);
   };
-
-  render() {
+  {
     return (
       <Container className="mt-5">
         <Form>
@@ -27,37 +31,29 @@ class BookList extends Component {
             type="text"
             placeholder="Search your book here"
             onChange={(e) => {
-              this.setState({
+              /*   this.setState({
                 bookTitle: e.target.value,
-              });
+              }); */
+              setBookTitle(e.target.value);
             }}
           />
         </Form>
         <Row className="align-items-stretch">
           <Col className="col-8">
-
             <Row>
-            {this.props.booksArray.map((item) => {
-              return (
-               
-                <SingleBook
-                  book={item}
-                  key={item.asin}
-                  changeAsin={this.changeAsin}
-                  currentlyActiveAsin={this.state.asin}
-                />
-              );
-            })}
-          </Row>
+              {props.booksArray.map((item) => {
+                return <SingleBook book={item} key={item.asin} changeAsin={changeAsin} currentlyActiveAsin={asin} />;
+              })}
+            </Row>
           </Col>
 
           <Col className="col-4">
-            <CommentArea asin={this.state.asin} />
+            <CommentArea asin={asin} />
           </Col>
         </Row>
       </Container>
     );
   }
-}
+};
 
 export default BookList;

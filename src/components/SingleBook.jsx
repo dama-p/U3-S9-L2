@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const SingleBook = function ({ book, key, changeAsin, currentlyActiveAsin }) {
+const SingleBook = function ({ book, changeAsin, currentlyActiveAsin }) {
   {
     return (
       <>
