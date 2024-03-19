@@ -1,16 +1,22 @@
 import { Component } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const URL = "https://striveschool-api.herokuapp.com/api/comments/";
-class CommentArea extends Component {
-  state = {
+const CommentArea = function ({ asin }) {
+  /*   state = {
     bookComments: [],
     isLoading: true,
     isError: false,
-  };
+  }; */
 
-  fetchComments = () => {
-    fetch(URL + this.props.asin, {
+  const [bookComments, setBookComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  const fetchComments = () => {
+    fetch(URL + asin, {
       method: "GET",
 
       headers: {
@@ -28,22 +34,26 @@ class CommentArea extends Component {
 
       .then((comments) => {
         /*  console.log("COMMENTS", comments); */
-        this.setState({
+        /*      this.setState({
           bookComments: comments,
           isLoading: false,
-        });
+        }); */
+        setBookComments(comments);
+        setIsLoading(false);
       })
 
       .catch((error) => {
         console.log("ERRORE", error);
-        this.setState({
+        /*  this.setState({
           isLoading: false,
           isError: true,
-        });
+        }); */
+        setIsLoading(false);
+        setIsError(true);
       });
   };
 
-  componentDidMount() {
+  /*   componentDidMount() {
     if (this.props.asin) {
       this.fetchComments();
     }
@@ -53,17 +63,20 @@ class CommentArea extends Component {
     if (prevProps.asin !== this.props.asin) {
       this.fetchComments();
     }
-  }
+  } */
 
-  render() {
+  useEffect(() => {
+    fetchComments();
+  }, [asin]);
+  {
     return (
       <ListGroup>
-        {this.state.bookComments.map((comment) => {
+        {bookComments.map((comment) => {
           return <ListGroup.Item key={comment._id}>{comment.comment}</ListGroup.Item>;
         })}
       </ListGroup>
     );
   }
-}
+};
 
 export default CommentArea;
