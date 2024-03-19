@@ -48,6 +48,7 @@ const BookList = function (props) {
           </Col>
 
           <Col className="col-4">
+            <h2 className="text-danger mt-3">Comments:</h2>
             <CommentArea asin={asin} />
           </Col>
         </Row>

@@ -7,7 +7,7 @@ const SingleBook = function ({ book, changeAsin, currentlyActiveAsin }) {
   {
     return (
       <>
-        <Col className="col-2 gy-3 d-flex">
+        <Col className="col-6 col-md-4 col-lg-3 gy-3 d-flex">
           <Card
             style={{
               outline: book.asin === currentlyActiveAsin ? "2px solid red" : "none",

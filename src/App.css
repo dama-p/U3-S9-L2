@@ -83,7 +83,6 @@
   font-size: 1.1rem;
   line-height: 1.3rem;
   font-weight: bold;
- 
 }
 
 .cardDetails {
@@ -91,3 +90,8 @@
   font-family: monospace;
 }
 
+#listStyle {
+  background-color: #212529;
+  color: white;
+  margin-top: 20px;
+}

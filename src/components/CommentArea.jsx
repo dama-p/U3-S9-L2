@@ -72,7 +72,7 @@ const CommentArea = function ({ asin }) {
     return (
       <ListGroup>
         {bookComments.map((comment) => {
-          return <ListGroup.Item key={comment._id}>{comment.comment}</ListGroup.Item>;
+          return <ListGroup.Item id="listStyle" key={comment._id}>{comment.comment}</ListGroup.Item>;
         })}
       </ListGroup>
     );
