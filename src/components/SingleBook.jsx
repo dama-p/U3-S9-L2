@@ -1,44 +1,31 @@
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import CommentArea from "./CommentArea";
-import { Component } from "react";
 
-class SingleBook extends Component {
-  /*   state = {
-    selected: false,
-  }; */
-
-  render() {
+const SingleBook = function ({ book, key, changeAsin, currentlyActiveAsin }) {
+  {
     return (
       <>
-     
         <Col className="col-2 gy-3 d-flex">
           <Card
             style={{
-              outline: this.props.book.asin === this.props.currentlyActiveAsin ? "2px solid red" : "none",
+              outline: book.asin === currentlyActiveAsin ? "2px solid red" : "none",
             }}
             id="cardStyle"
           >
-            <Card.Img variant="top" src={this.props.book.img} style={{ height: "18rem" }} />
+            <Card.Img variant="top" src={book.img} style={{ height: "18rem" }} />
             <Card.Body className="d-flex flex-column cardbodyStyle">
-              <p className="cardTitle d-flex flex-grow-1">{this.props.book.title}</p>
+              <p className="cardTitle d-flex flex-grow-1">{book.title}</p>
               <p className="d-flex justify-content-center cardDetails">
-                {this.props.book.price}€ • {this.props.book.category}
+                {book.price}€ • {book.category}
               </p>
 
-              {/*     {this.state.selected === true && (
-                <div>
-                  <CommentArea asin={this.props.book.asin}/>
-                </div>
-              )} */}
               <Button
                 variant="warning"
                 className="d-flex mx-auto mt-auto"
                 onClick={() => {
-                  /*  this.setState({ selected: !this.state.selected }); */
-                  this.props.changeAsin(this.props.book.asin);
+                  changeAsin(book.asin);
                 }}
               >
                 Add to cart
@@ -46,10 +33,9 @@ class SingleBook extends Component {
             </Card.Body>
           </Card>
         </Col>
-  
       </>
     );
   }
-}
+};
 
 export default SingleBook;
